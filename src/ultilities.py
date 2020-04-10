@@ -27,7 +27,8 @@ def convert_to_adj_list(file):
     #         keys.append(i[0])
     #         values.append(i[1])
     #         data = dict(zip(keys, values))
-    #         graph_dict[key] = data
+    #         graph_dict[key] = root_choice = input()data
 
     return graph_dict
+
 

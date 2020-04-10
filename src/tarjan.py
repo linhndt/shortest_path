@@ -3,7 +3,7 @@ from src.ultilities import convert_to_adj_list
 import numpy as np
 
 
-def TarjanSPathTree(graph, starting_node):
+def tarjanspathtree(graph, starting_node):
 
     solution_dict = {}
 
@@ -30,7 +30,7 @@ def TarjanSPathTree(graph, starting_node):
     return solution_dict
 
 
-def find_shortest_path_bt_two_nodes(graph, starting_node, ending_node):
+def tarjanstpath(graph, starting_node, ending_node):
 
     pq, visited, distance = [(0, starting_node, [])], set(), {starting_node: 0}
     while pq:
@@ -54,10 +54,51 @@ def find_shortest_path_bt_two_nodes(graph, starting_node, ending_node):
     return np.inf, []
 
 
+def TarjanSPathTree():
+
+    file = "data/heap/ballyskate_layout.txt"
+    graph = convert_to_adj_list(file)
+    print("Our nodes in the graph is:", *graph.keys())
+
+    initial_node = input("Input node which you want to start with: ")
+
+    while initial_node:
+
+        if initial_node in graph.keys():
+
+            spanning_tree = tarjanspathtree(graph, initial_node)
+
+            print("----------Solution----------")
+            for node, value in spanning_tree.items():
+                print("Node ", node, ":")
+                print("Distance and path from ", "node ", initial_node, " is: ", value)
+
+            choice = input("Do you want to continue? (y/n): ")
+
+            while choice.lower() != 'n':
+
+                if choice == "y":
+                    TarjanSPathTree()
+
+                else:
+                    print("Please choose y or n")
+
+                choice = input("Do you want to continue? (y/n): ")
+
+            break
+
+        else:
+            print("Please input a proper starting node.")
+
+        initial_node = input("Input node which you want to start with: ")
+
+
 if __name__ == "__main__":
 
-    file = "../data/ballyskate_layout.txt"
-    graph = convert_to_adj_list(file)
-    print(graph)
-    print(TarjanSPathTree(graph, '1'))
-    print(find_shortest_path_bt_two_nodes(graph, '1', 'p'))
+    # file = "../data/heap/ballyskate_layout.txt"
+    # graph = convert_to_adj_list(file)
+    # print(graph)
+    # print(tarjanspathtree(graph, '1'))
+    # print(tarjanstpath(graph, '1', 'p'))
+
+    TarjanSPathTree()

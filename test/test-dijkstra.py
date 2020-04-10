@@ -40,7 +40,7 @@ graph = {'a': {'w': 14, 'x': 7, 'y': 9},
 
 from src.ultilities import convert_to_adj_list
 
-file = "/home/thaolinhnguyen/PycharmProjects/aor/data/ballyskate_layout.txt"
+file = "/data/heap/ballyskate_layout.txt"
 a = convert_to_adj_list(file)
 print(a)
 print(graph)

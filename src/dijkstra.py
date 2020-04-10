@@ -1,89 +1,46 @@
 import numpy as np
-import matplotlib.pyplot as plt
-import linecache
 
 
-class DijkstraSPathTree:
-    def __init__(self, network, root=1):
-        self.network = network
-        self.matrix = np.loadtxt(self.network, skiprows=2); self.matrix[self.matrix == 0] = np.inf
-        self.node_num = int(linecache.getline(self.network, 2))
-        """
-        root is the rank of the root
-        root code is the python rank of the root
-        root name is the actual name of the root
-        """
-        self.root = root; self.root_code = root - 1
-        self.permanent_set = [self.root_code]
-        self.temporary_set = [*range(0, self.node_num)]; self.temporary_set.remove(self.root_code)
-        self.parent_set = [self.root_code] * self.node_num
-        self.distance_set = self.matrix[self.root_code]
-        self.adj_set = set(np.where(np.isinf(self.distance_set) == 0)[0])  # array into set
-        self.distance_shortest_set = [0]
-        self.parent_shortest_set = [0]
+def startwith(start: int, matrix: list) -> list:
+    # param start: index of starting point, starts from 0
+    # param matrix: adjacency matrix
+    # return to a list
+    permanent_vertices = [start]
+    # store the points of which the shortest distance has been determined
+    temporary_vertices = [x for x in range(len(matrix)) if x != start]
+    # store the points of which the shortest distance has not been determined
+    dis = matrix[start]
+    # result to be returned
+    # initialization
 
-    def visualisation(self):
-        """
-        visualisation of the network and the outcome
-        :return:
-        """
-        pass
+    # determine the next point with shortest distance
 
-    def algorithm(self):
-        matrix = self.matrix
-        self.matrix[:, self.root_code] = np.inf
+    while len(temporary_vertices):
+        idx = temporary_vertices[0]
+        for i in temporary_vertices:
+            if dis[i] < dis[idx]:
+                idx = i
+        # traverse the temporary_vertices and find the points with the shortest distance
 
-        """
-        initialise
-        """
-        # TODO root shouldn't larger than node_nums/ maybe could input node names
+        temporary_vertices.remove(idx)
+        permanent_vertices.append(idx)
+        # points with the shortest distance move from list temporary_vertices to list permanet_vertices
 
-        # TODO validate matrix length
-        # node_num_matrix = len(matrix)
-        # TODO complexity
-        # permanent_set = {1: 1} # with parent node
-        # node_names = []
+        for i in temporary_vertices:
+            if dis[idx] + matrix[idx][i] < dis[i]:
+                dis[i] = dis[idx] + matrix[idx][i]
+            # Based on idx, check the distance from idx to other points.
+            # If the distance from start point to idx,
+            # then to point n is less than the distance from start point to point n, update the value of dis [n]
 
-        while self.temporary_set:
-
-            # Select the min distance from the permanent set
-            sp_distance = np.min(self.distance_set[list(self.adj_set)])
-            self.distance_shortest_set.append(sp_distance)
-            node_u = np.where(self.distance_set == sp_distance)[0][0]  # TODO adj or tem
-            self.parent_shortest_set.append(self.parent_set[node_u])
-
-            # Delete the node found above from the tem_set and add it to the per_set
-            self.permanent_set.append(node_u)
-            self.temporary_set.remove(node_u)
-
-            # update adj_set
-            new_adj_set = list(np.where(np.isinf(self.matrix[node_u]) == 0)[0])
-            for i in new_adj_set:
-                self.adj_set.add(i)
-            self.adj_set = {x for x in self.adj_set if x in self.temporary_set}
-
-            # update the matrix
-            matrix[:, node_u] = np.inf
-
-            # update parent_set and distance_set
-            for i in self.adj_set:
-                new_adj_path = matrix[node_u][i] + sp_distance
-                if self.distance_set[i] > new_adj_path:
-                    self.parent_set[i] = node_u
-                    self.distance_set[i] = new_adj_path
+    return dis
+    # repeat the above process until terporary_vertices is empty
 
 
-        # print("temporat set is", self.temporary_set)
-        # print("parent set is", self.parent_set)
-        print("permanent set is", self.permanent_set)
-        print(self.distance_shortest_set)
-        # print(self.parent_shortest_set)
+if __name__ == "__main__":
+    matrix = np.loadtxt('../data/array/ballyskate_layout.txt', skiprows=2, dtype=int)
+    # load the txt file with adjacency matrix
 
-    def closeness(self):
-        closeness_list = []
-        for i in range(self.node_num):
-            self.root_code = i
-            print(self.root)
-            self.algorithm()
-            closeness_list.append(sum(self.distance_shortest_set)/(self.node_num-1))
-        return closeness_list
+    dis = startwith(0, matrix)
+
+    print(dis)
