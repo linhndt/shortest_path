@@ -14,7 +14,7 @@ def tarjanspathtree(graph, starting_node):
             (cost, current_node, path) = heap.extract_min()
             if current_node not in visited:
                 visited.add(current_node)
-                path = [current_node] + path
+                path = path + [current_node]
                 if current_node == ending_node:
                     solution_dict[ending_node] = (cost, path)
 
@@ -32,26 +32,11 @@ def tarjanspathtree(graph, starting_node):
 
 def tarjanstpath(graph, starting_node, ending_node):
 
-    pq, visited, distance = [(0, starting_node, [])], set(), {starting_node: 0}
-    while pq:
-        heap = MinHeap(pq)
-        (cost, current_node, path) = heap.extract_min()
-        if current_node not in visited:
-            visited.add(current_node)
-            path = [current_node] + path
-            if current_node == ending_node:
-                return cost, path
+    solution_dict = tarjanspathtree(graph, starting_node)
 
-            for neighbor, weight in graph.get(current_node, ()):
-                if neighbor in visited:
-                    continue
-                prev = distance.get(neighbor, None)
-                next = cost + weight
-                if prev is None or next < prev:
-                    distance[neighbor] = next
-                    heap.insert((next, neighbor, path))
+    spath = solution_dict[ending_node]
 
-    return np.inf, []
+    return spath
 
 
 def TarjanSPathTree():
@@ -95,10 +80,10 @@ def TarjanSPathTree():
 
 if __name__ == "__main__":
 
-    # file = "../data/heap/ballyskate_layout.txt"
-    # graph = convert_to_adj_list(file)
-    # print(graph)
-    # print(tarjanspathtree(graph, '1'))
-    # print(tarjanstpath(graph, '1', 'p'))
+    file = "../data/heap/ballyskate_layout.txt"
+    graph = convert_to_adj_list(file)
+    print(graph)
+    print(tarjanspathtree(graph, '1'))
+    print(tarjanstpath(graph, '1', 'p'))
 
-    TarjanSPathTree()
+    # TarjanSPathTree()
