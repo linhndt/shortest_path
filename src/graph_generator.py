@@ -11,44 +11,42 @@ def generate_dir_wei_sparse_graph(total_num_nodes, G):
         degrees = nx.degree(G)
         node_probabilities = {}
         for each in G.nodes():
-            if G.order() == 1:
+            if G.size() == 0:
                 node_probabilities[each] = 1
             else:
                 # the probability of each nodes being attached is = degrees of each node/sum of degree
-                node_probabilities[each] = degrees[each]/sum(dict(degrees).values())
-
+                node_probabilities[each] = degrees[each] / sum(dict(degrees).values())
         node_probabilities_cum = []
-        # results of line below shows cum probability of each node, like [[0,0.2],[1,0.35],[2,0.50],[3,0.7],[4,1.0]]
+        # results of line below shows cumulated probability of each node, like [[0,0.2],[1,0.35],[2,0.50],[3,0.7],[4,1.0]]
         prev = 0
         for n, p in node_probabilities.items():
-            temp = [n, prev+p]
+            temp = [n, prev + p]
             node_probabilities_cum.append(temp)
             prev = prev + p
 
-        # if the random number r falls into the "windows",
-        # then return that k value which indicates the target node we should attach to
-        n = int(random.random()*10)
+        # if the random number r falls into the "windows", then return that k value which indicates the target node we should attach to
+
+        n = 1
         target_list = []
+
         for j in range(n):
             prev_cum = 0
             r = random.random()
             k = 0
-            while not(prev_cum < r <= node_probabilities_cum[k][1]):
+            while (not (r > prev_cum and r <= node_probabilities_cum[k][1])):
                 prev_cum = node_probabilities_cum[k][1]
                 k += 1
             # after jump out of loop, we got value of k, that's what we need for the index of target node
             target_node = node_probabilities_cum[k][0]
-            if not(target_node in target_list):
+            if not (target_node in target_list):
                 target_list.append(target_node)
 
-        # add node
+        # adding node
         G.add_node(i)
-
-        # add weight to the edges with random number
+        # adding weight to the edges with random number
         for target in target_list:
             weight = random.randint(10, 30)
             G.add_weighted_edges_from([(target, i, weight)])
-
     return G
 
 
@@ -161,17 +159,6 @@ def graph_generator():
     G = nx.from_numpy_matrix(C, create_using=nx.DiGraph)
     graph_size = int(input("Type the number of nodes you want in total:\n"))
 
-    # dense graph
-    dense_graph = generate_dir_wei_dense_graph(graph_size, G)
-    # save graph to the form of a matrix:
-    dense_graph_matrix = nx.to_numpy_matrix(dense_graph)
-
-    # save to txt files:
-    txt_file_name_array_dense = "data/array/dense_weighted_matrix.txt"
-    txt_file_name_stream_dense = "data/heap/dense_stream_arcs.txt"
-    save_stream_arc_format(dense_graph_matrix, graph_size, txt_file_name_stream_dense)
-    save_matrix_format(dense_graph_matrix, graph_size, txt_file_name_array_dense)
-
     # sparse graph
     sparse_graph = generate_dir_wei_sparse_graph(graph_size, G)
     # save graph to the form of a matrix:
@@ -183,10 +170,18 @@ def graph_generator():
     save_stream_arc_format(sparse_graph_matrix, graph_size, txt_file_name_stream_sparse)
     save_matrix_format(sparse_graph_matrix, graph_size, txt_file_name_array_sparse)
 
+    # dense graph
+    dense_graph = generate_dir_wei_dense_graph(graph_size, G)
+    # save graph to the form of a matrix:
+    dense_graph_matrix = nx.to_numpy_matrix(dense_graph)
+
+    # save to txt files:
+    txt_file_name_array_dense = "data/array/dense_weighted_matrix.txt"
+    txt_file_name_stream_dense = "data/heap/dense_stream_arcs.txt"
+    save_stream_arc_format(dense_graph_matrix, graph_size, txt_file_name_stream_dense)
+    save_matrix_format(dense_graph_matrix, graph_size, txt_file_name_array_dense)
+
 
 if __name__ == "__main__":
-
-    """create a graph from a matrix start with 1 nodes No.0"""
     graph_generator()
-
 

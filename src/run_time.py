@@ -64,7 +64,7 @@ def heap_sparse(root):
 if __name__ == "__main__":
 
     root = 1
+    print("Heap_sparse", heap_sparse(str(root)))
     print("Array_dense", array_dense(root))
     print("Array_sparse", array_sparse(root))
     print("Heap_dense", heap_dense(str(root)))
-    print("Heap_sparse", heap_sparse(str(root)))

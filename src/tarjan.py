@@ -10,8 +10,8 @@ def tarjanspathtree(graph, starting_node):
 
     for ending_node in graph.keys():
         pq, visited, distance = [(0, starting_node, [])], set(), {starting_node: 0}
+        heap = MinHeap(pq)
         while pq:
-            heap = MinHeap(pq)
             (cost, current_node, path) = heap.extract_min()
             if current_node not in visited:
                 visited.add(current_node)
@@ -85,6 +85,3 @@ if __name__ == "__main__":
     file_q3 = "../data/heap/dense_stream_arcs.txt"
     graph_3 = convert_to_adj_list(file_q3)
     print(graph_3)
-    a = tarjanspathtree(graph_3, '1')
-    for i in sorted(a.keys()):
-        print("Distance and shortest_path from node 1 to node", i, "is", a[i])

@@ -54,7 +54,7 @@ def main():
         print("Shortest path program")
         print("1. Implementation of algorithms for large graph \n2. Solve Ballyskate problem \n"
               "3. Solve Padgett Marriage Alliances \n4. Quit")
-        user_choice = int(input("Please select your choice: 1, 2, or 3."))
+        user_choice = int(input("Please select your choice: 1, 2, or 3.\n"))
 
     print("Thank you!")
 

@@ -24,7 +24,7 @@ class DSPUnitTest(unittest.TestCase):
         self.assertLess(self.array_dense, self.heap_dense)
 
     def testSparse(self):
-        self.assertGreater(self.heap_sparse, self.array_sparse)
+        self.assertGreater(self.array_sparse, self.heap_sparse)
 
 
 if __name__ == '__main__':

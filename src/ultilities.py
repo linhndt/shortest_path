@@ -39,3 +39,4 @@ def convert_to_graph(file):
 
     graph = nx.Graph(graph_dict)
     return graph
+
