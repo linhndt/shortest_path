@@ -118,9 +118,9 @@ class MinHeap:
         # last n/2 elements will be leaf nodes (CBT property) hence already min heaps
         # loop from n/2 to 0 index and convert each index node into min heap
         for i in range(int(n / 2), -1, -1):
-            self.min_heapify(i, arr, n)
+            self.sift_down(i, arr, n)
 
-    def min_heapify(self, indx, arr, size):
+    def sift_down(self, indx, arr, size):
         """
         Assuming sub trees are already min heaps, converts tree rooted at current indx into a min heap.
         :param indx: Index to check for min heap
@@ -143,7 +143,7 @@ class MinHeap:
         # and recursively call min_heapify on the respective child swapped with
         if smallest != indx:
             arr[indx], arr[smallest] = arr[smallest], arr[indx]
-            self.min_heapify(smallest, arr, size)
+            self.sift_down(smallest, arr, size)
 
     def insert(self, value):
         """
@@ -172,17 +172,17 @@ class MinHeap:
         :return: Value of the node deleted from the heap
         """
         if self.heap_size == 0:
-            print("Heap Underflow!!")
+            print("Heap is empty!!")
             return
 
         self.heap[-1], self.heap[indx] = self.heap[indx], self.heap[-1]
         self.heap_size -= 1
 
-        self.min_heapify(indx, self.heap, self.heap_size)
+        self.sift_down(indx, self.heap, self.heap_size)
 
         return self.heap.pop()
 
-    def extract_min(self):
+    def delete_min(self):
         """
         Extracts the minimum value from the heap
         :return: extracted min value

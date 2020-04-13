@@ -1,0 +1,62 @@
+0. Objective
+Tìm 4 cái:
+(a) test case: dựa theo yêu cầu của đề bài 
+(b) test data: tự seed data
+(c) expected result: chắc tính tay =)) hoặc kiếm công cụ nào có acc 100%
+(d) actual result: output của chương trìnhtrình
+
+1. Theory
+Test Point: Là một đơn vị kiểm tra nhỏ nhất, chỉ chứa đơn giản một assertion nhằm khẳng định tính đúng đắn của một chi tiết mã nào đó. 
+Test Case: Là một tập hợp các test point nhằm kiểm tra một đặc điểm chức năng cụ thể.
+
+Mỗi UT sẽ gửi đi một thông điệp và kiểm tra câu trả lời nhận được đúng hay không, bao gồm:
+- Các kết quả trả về mong muốn
+- Các lỗi ngoại lệ mong muốn
+
+2. Examples
+Em ví dụ với assmt 3.1 chẳng hạn
+Ta có code của main ở class DijiktraShortestPath ntn:
+
+class DijiktraShortestPath: 
+    def __init__(self, G, r):
+        // validate 
+        // initilize vars
+
+    def findPath:
+        // measure time
+        // travel and compare
+    
+Ta có vài testcase như sau: (chị có thể nghĩ thêm nhé)
+- validate kết quả có đúng hay không: expected_result == actual_result? 
+- validate type của actual result: type(actual_result) is list
+
+
+import unittest 
+  
+class DSPUnitTest(unittest.TestCase):
+    expected_result = [// body]
+    actual_result = [//body]    
+    
+    # Setting up for the test
+    def setUp(self):
+        // optional, you can setup expected_result, actual_result here
+        pass
+    
+    # Cleaning up after the test
+    def tearDown(self):
+        // optional
+        pass
+
+    # Returns True if the expected_result is equal actual_result
+    def testExpectedResult(self): 
+        self.assertEqual(self.expected_result, self.actual_result) 
+  
+    # Returns True if type of actual_result is list
+    def test_upper(self):
+        self.assertIsInstance(self.actual_result, list) 
+  
+if __name__ == '__main__': 
+    unittest.main() 
+
+
+Run it: python -m unittest DSPUnitTest

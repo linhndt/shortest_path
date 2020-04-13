@@ -1,4 +1,4 @@
-from src.heap import Heap, MinHeap
+from src.heap import MinHeap
 from src.ultilities import convert_to_adj_list
 import numpy as np
 
@@ -12,7 +12,7 @@ def tarjanspathtree(graph, starting_node):
         pq, visited, distance = [(0, starting_node, [])], set(), {starting_node: 0}
         heap = MinHeap(pq)
         while pq:
-            (cost, current_node, path) = heap.extract_min()
+            (cost, current_node, path) = heap.delete_min()
             if current_node not in visited:
                 visited.add(current_node)
                 path = path + [current_node]

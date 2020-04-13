@@ -1,11 +1,3 @@
-"""
-(a) test case: to check running time of shortest path program blabla
-(b) test data: graph built from Preferential Attachment
-(c) expected result: blabla
-(d) actual result: program output
-
-To run: python -m unittest DSPUnitTest
-"""
 import src.run_time as rt
 import unittest
 
@@ -25,6 +17,24 @@ class DSPUnitTest(unittest.TestCase):
 
     def testSparse(self):
         self.assertGreater(self.array_sparse, self.heap_sparse)
+
+
+class HeapDelMin(unittest.TestCase):
+    """
+    (a) test case: to check the propriety of delete_min operation of MinHeap Class
+    (b) test data: a random list of numbers [50, 26, 49, 21, 71, 21, 20, 48, 11, 56]
+    (c) expected result: 11
+    (d) actual result: program output
+    """
+
+    # Setting up for the test
+    def setUp(self):
+        self.random_list = [50, 26, 49, 21, 71, 21, 20, 48, 11, 56]
+        self.delmin = MinHeap(self.random_list).delete_min()
+
+    def testEqual(self):
+        self.assertEqual(self.delmin, 11)
+
 
 
 if __name__ == '__main__':
