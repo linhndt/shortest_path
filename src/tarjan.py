@@ -80,10 +80,16 @@ def TarjanSPathTree():
 
 if __name__ == "__main__":
 
-    file = "../data/heap/ballyskate_layout.txt"
-    graph = convert_to_adj_list(file)
-    print(graph)
-    print(tarjanspathtree(graph, '1'))
-    print(tarjanstpath(graph, '1', 'p'))
+    file_q3 = "../data/heap/ballyskate_layout.txt"
+    graph_3 = convert_to_adj_list(file_q3)
+    print(graph_3)
+    print(tarjanspathtree(graph_3, '1'))
+    print(tarjanstpath(graph_3, '1', 'p'))
+
+    file_4 = "../data/padgett.txt"
+    graph_4 = convert_to_adj_list(file_4)
+    print(graph_4)
+    print(tarjanspathtree(graph_4, 'Medici'))
+    print(tarjanstpath(graph_4, 'Medici', 'Peruzzi'))
 
     # TarjanSPathTree()
