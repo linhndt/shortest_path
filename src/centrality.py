@@ -1,5 +1,5 @@
 from src.tarjan import tarjanspathtree
-from src.ultilities import convert_to_adj_list
+from src.ultilities import convert_to_adj_list, convert_to_graph
 import networkx as nx
 
 
@@ -50,7 +50,8 @@ def FloretineMarriage():
 
     txt_input_file = "../data/padgett.txt"
 
-    graph = convert_to_adj_list(txt_input_file)
+    adj_list = convert_to_adj_list(txt_input_file)
+    graph = convert_to_graph(txt_input_file)
 
     print("Centrality measures available: (1) degree, (2) eigenvector, (3) closeness, (4) and betweeness.")
     measure_choice = int(input("Please choose measures you want to calculate (from 1 to 4) \n"))
@@ -59,79 +60,79 @@ def FloretineMarriage():
 
         if measure_choice == 1:
             deg_dict = degree(graph)
-            for node in graph.keys():
-                print("Degree centrality of node ", node, " is: ", deg_dict[node])
+            for node in deg_dict.keys():
+                print("Degree centrality of node ", node, " is: ", "{:.3f}".format(deg_dict[node]))
+
+            choice = input("Do you want to calculate other measures?? (y/n): ")
+
+            while choice.lower() != 'n':
+
+                if choice == "y":
+                    FloretineMarriage()
+
+                else:
+                    print("Please choose y or n")
 
                 choice = input("Do you want to calculate other measures?? (y/n): ")
 
-                while choice.lower() != 'n':
-
-                    if choice == "y":
-                        FloretineMarriage()
-
-                    else:
-                        print("Please choose y or n")
-
-                    choice = input("Do you want to calculate other measures?? (y/n): ")
-
-                break
+            break
 
         if measure_choice == 2:
             eig_dict = eigen_vector(graph)
-            for node in graph.keys():
-                print("Eigenvector centrality of node ", node, " is: ", eig_dict[node])
+            for node in eig_dict.keys():
+                print("Eigenvector centrality of node ", node, " is: ", "{:.3f}".format(eig_dict[node]))
+
+            choice = input("Do you want to calculate other measures?? (y/n): ")
+
+            while choice.lower() != 'n':
+
+                if choice == "y":
+                    FloretineMarriage()
+
+                else:
+                    print("Please choose y or n")
 
                 choice = input("Do you want to calculate other measures?? (y/n): ")
 
-                while choice.lower() != 'n':
-
-                    if choice == "y":
-                        FloretineMarriage()
-
-                    else:
-                        print("Please choose y or n")
-
-                    choice = input("Do you want to calculate other measures?? (y/n): ")
-
-                break
+            break
 
         if measure_choice == 3:
-            closeness_dict = closeness(graph)
-            for node in graph.keys():
-                print("Closeness centrality of node ", node, " is: ", closeness_dict[node])
+            closeness_dict = closeness(adj_list)
+            for node in closeness_dict.keys():
+                print("Closeness centrality of node ", node, " is: ", "{:.3f}".format(closeness_dict[node]))
+
+            choice = input("Do you want to calculate other measures?? (y/n): ")
+
+            while choice.lower() != 'n':
+
+                if choice == "y":
+                    FloretineMarriage()
+
+                else:
+                    print("Please choose y or n")
 
                 choice = input("Do you want to calculate other measures?? (y/n): ")
 
-                while choice.lower() != 'n':
-
-                    if choice == "y":
-                        FloretineMarriage()
-
-                    else:
-                        print("Please choose y or n")
-
-                    choice = input("Do you want to calculate other measures?? (y/n): ")
-
-                break
+            break
 
         if measure_choice == 4:
             bw_dict = betweeness(graph)
-            for node in graph.keys():
-                print("Betweeness centrality of node ", node, " is: ", bw_dict[node])
+            for node in bw_dict.keys():
+                print("Betweeness centrality of node ", node, " is: ", "{:.3f}".format(bw_dict[node]))
+
+            choice = input("Do you want to calculate other measures?? (y/n): ")
+
+            while choice.lower() != 'n':
+
+                if choice == "y":
+                    FloretineMarriage()
+
+                else:
+                    print("Please choose y or n")
 
                 choice = input("Do you want to calculate other measures?? (y/n): ")
 
-                while choice.lower() != 'n':
-
-                    if choice == "y":
-                        FloretineMarriage()
-
-                    else:
-                        print("Please choose y or n")
-
-                    choice = input("Do you want to calculate other measures?? (y/n): ")
-
-                break
+            break
 
         else:
             print("Please choose from 1 to 4")

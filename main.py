@@ -2,6 +2,7 @@ import time
 from src.dijkstra import *
 from src.tarjan import TarjanSPathTree, tarjanstpath
 from src.ultilities import convert_to_adj_list
+from src.centrality import FloretineMarriage
 
 
 def main():
@@ -40,6 +41,7 @@ def main():
 
         elif user_choice == 3:
             print("Solution for Padgett Marriage Alliances problem:")
+            FloretineMarriage()
 
         else:
             print("Please choose 1, 2, or 3.")
