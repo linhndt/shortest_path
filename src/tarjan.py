@@ -57,7 +57,7 @@ def TarjanSPathTree():
             for node, value in spanning_tree.items():
                 print("Distance and path from node", initial_node, "to node", node, "is: ", value)
 
-            choice = input("Do you want to continue? (y/n): ")
+            choice = input("Do you want to choose another starting node? (y/n): ")
 
             while choice.lower() != 'n':
 
@@ -67,7 +67,7 @@ def TarjanSPathTree():
                 else:
                     print("Please choose y or n")
 
-                choice = input("Do you want to continue? (y/n): ")
+                choice = input("Do you want to choose another starting node? (y/n): ")
 
             break
 

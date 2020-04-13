@@ -19,15 +19,15 @@ def main():
             print("You need to create a graph first.")
             graph_generator()
 
-            print("Update for use of heap and array")
+            print("Based on time complexity, we use an array data structure for the dense graph,"
+                  "and a min heap for the sparse graph.")
 
             while True:
 
                 structure_choice = input("Input type of data structure (array, heap) you want to use: ")
 
                 if structure_choice.lower() == "array":
-                    print("to be updated")
-
+                    DjikstraSthTree()
                     break
 
                 elif structure_choice.lower() == "heap":
