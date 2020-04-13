@@ -41,7 +41,7 @@ def tarjanstpath(graph, starting_node, ending_node):
 
 def TarjanSPathTree():
 
-    file = "data/heap/ballyskate_layout.txt"
+    file = "../data/padgett.txt"
     graph = convert_to_adj_list(file)
     print("Our nodes in the graph is:", *graph.keys())
 
@@ -90,6 +90,5 @@ if __name__ == "__main__":
     graph_4 = convert_to_adj_list(file_4)
     print(graph_4)
     print(tarjanspathtree(graph_4, 'Medici'))
-    print(tarjanstpath(graph_4, 'Medici', 'Peruzzi'))
-
+    # print(tarjanstpath(graph_4, 'Medici', 'Peruzzi'))
     # TarjanSPathTree()

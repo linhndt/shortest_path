@@ -1,43 +1,43 @@
 S
 16
 Pucci, Pucci, 0
-Peruzzi, Castellan, 1 
-Peruzzi, Strozzi, 1
-Peruzzi, Bischeri, 1
-Castellan, Barbadori, 1
-Castellan, Strozzi, 1
-Castellan, Peruzzi, 1
-Strozzi, Bischeri, 1
-Strozzi, Ridolfi, 1
-Strozzi, Peruzzi, 1
-Strozzi, Castellan, 1
-Bischeri, Guadagni, 1
-Bischeri, Peruzzi, 1
-Bischeri, Strozzi, 1
-Barbadori, Medici, 1
-Barbadori, Castellan, 1
-Ridolfi, Tornaboun, 1
-Ridolfi, Medici, 1
-Ridolfi, Strozzi, 1
-Tornabuon, Ridolfi, 1
-Tornabuon, Guadagni, 1
-Tornabuon, Medici, 1
-Guadagni, Lambertes, 1
-Guadagni, Tornabuon, 1
-Guadagni, Albizzi, 1
-Guadagni, Bischeri, 1
-Lambertes, Guadagni, 1
-Medici, Tornabuon, 1
-Medici, Albizzi, 1
-Medici, Acciaiuol, 1
-Medici, Salviati, 1
-Medici, Barbadori, 1
-Medici, Ridolfi, 1
-Albizzi, Ginori, 1
-Albizzi, Guadagni, 1
-Albizzi, Medici, 1
-Ginori, Albizzi, 1
-Salviati, Pazzi, 1
-Salviati, Medici, 1
-Pazzi, Salviati, 1
-Acciaiuol, Medici, 1
+Peruzzi,Castellan, 1
+Peruzzi,Strozzi, 1
+Peruzzi,Bischeri, 1
+Castellan,Barbadori, 1
+Castellan,Strozzi, 1
+Castellan,Peruzzi, 1
+Strozzi,Bischeri, 1
+Strozzi,Ridolfi, 1
+Strozzi,Peruzzi, 1
+Strozzi,Castellan, 1
+Bischeri,Guadagni, 1
+Bischeri,Peruzzi, 1
+Bischeri,Strozzi, 1
+Barbadori,Medici, 1
+Barbadori,Castellan, 1
+Ridolfi,Tornaboun, 1
+Ridolfi,Medici, 1
+Ridolfi,Strozzi, 1
+Tornabuon,Ridolfi, 1
+Tornabuon,Guadagni, 1
+Tornabuon,Medici, 1
+Guadagni,Lambertes, 1
+Guadagni,Tornabuon, 1
+Guadagni,Albizzi, 1
+Guadagni,Bischeri, 1
+Lambertes,Guadagni, 1
+Medici,Tornabuon, 1
+Medici,Albizzi, 1
+Medici,Acciaiuol, 1
+Medici,Salviati, 1
+Medici,Barbadori, 1
+Medici,Ridolfi, 1
+Albizzi,Ginori, 1
+Albizzi,Guadagni, 1
+Albizzi,Medici, 1
+Ginori,Albizzi, 1
+Salviati,Pazzi, 1
+Salviati,Medici, 1
+Pazzi,Salviati, 1
+Acciaiuol,Medici, 1
