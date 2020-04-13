@@ -1,46 +1,89 @@
 import numpy as np
 
 
-def startwith(start: int, matrix: list) -> list:
-    # param start: index of starting point, starts from 0
-    # param matrix: adjacency matrix
-    # return to a list
+def Dijkstraspathtree(matrix, start):
+    length = len(matrix)
     permanent_vertices = [start]
-    # store the points of which the shortest distance has been determined
-    temporary_vertices = [x for x in range(len(matrix)) if x != start]
-    # store the points of which the shortest distance has not been determined
-    dis = matrix[start]
-    # result to be returned
-    # initialization
+    temporary_vertices = []
 
-    # determine the next point with shortest distance
+    solution_dict = {}
+    dis = []
 
-    while len(temporary_vertices):
-        idx = temporary_vertices[0]
-        for i in temporary_vertices:
-            if dis[i] < dis[idx]:
-                idx = i
-        # traverse the temporary_vertices and find the points with the shortest distance
+    dis.extend(matrix[start])
+    temporary_vertices.extend(matrix[start])
+    temporary_vertices[start] = np.inf
 
-        temporary_vertices.remove(idx)
-        permanent_vertices.append(idx)
-        # points with the shortest distance move from list temporary_vertices to list permanet_vertices
+    path_parent = [start] * length
+    while len(permanent_vertices) < length:
+        i = temporary_vertices.index(min(temporary_vertices))
+        temporary_vertices[i] = np.inf
 
-        for i in temporary_vertices:
-            if dis[idx] + matrix[idx][i] < dis[i]:
-                dis[i] = dis[idx] + matrix[idx][i]
-            # Based on idx, check the distance from idx to other points.
-            # If the distance from start point to idx,
-            # then to point n is less than the distance from start point to point n, update the value of dis [n]
+        path = list()
+        path.append(str(i))
 
-    return dis
-    # repeat the above process until terporary_vertices is empty
+        k = i
+        while path_parent[k] != start:
+            path.append(str(path_parent[k]))
+            k = path_parent[k]
+        path.append(str(start))
+        path.reverse()
+
+        permanent_vertices.append(i)
+        for j in range(length):
+            if j not in permanent_vertices:
+                if (dis[i] + matrix[i][j]) < dis[j]:
+                    dis[j] = temporary_vertices[j] = dis[i] + matrix[i][j]
+                    path_parent[j] = i
+
+        solution_dict[str(i)] = (dis[i], path)
+
+    return solution_dict
 
 
-if __name__ == "__main__":
-    matrix = np.loadtxt('../data/array/ballyskate_layout.txt', skiprows=2, dtype=int)
-    # load the txt file with adjacency matrix
+def Djikstrastpath(matrix, start, end):
 
-    dis = startwith(0, matrix)
+    solution_dict = Dijkstraspathtree(matrix, start)
+    spath = solution_dict[end]
 
-    print(dis)
+    return spath
+
+
+def DjikstraSthTree():
+
+    file = "data/array/dense_weighted_matrix.txt"
+    adjacency_matrix = np.loadtxt(file, skiprows=2)
+    adjacency_matrix[adjacency_matrix == 0] = np.inf
+
+    print("Our nodes in the graph is from 0 to", len(adjacency_matrix) - 1)
+
+    initial_node = int(input("Input node which you want to start with: "))
+
+    while initial_node:
+
+        if initial_node in range(len(adjacency_matrix)):
+
+            spanning_tree = Dijkstraspathtree(adjacency_matrix, initial_node)
+
+            print("----------Solution----------")
+            for node, value in spanning_tree.items():
+                print("Distance and path from node", initial_node, "to node", node, "is: ", value)
+
+            choice = input("Do you want to continue? (y/n): ")
+
+            while choice.lower() != 'n':
+
+                if choice == "y":
+                    DjikstraSthTree()
+
+                else:
+                    print("Please choose y or n")
+
+                choice = input("Do you want to continue? (y/n): ")
+
+            break
+
+        else:
+            print("Please input a proper starting node.")
+
+        initial_node = input("Input node which you want to start with: ")
+

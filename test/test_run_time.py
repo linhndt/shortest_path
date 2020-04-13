@@ -6,25 +6,25 @@
 
 To run: python -m unittest DSPUnitTest
 """
-
+import src.run_time as rt
 import unittest
 
 
 class DSPUnitTest(unittest.TestCase):
 
     # Setting up for the test
-    def setUp(self):
-        pass
+    def setUp(self) -> None:
+        self.root = 1
+        self.array_dense = rt.array_dense(self.root)
+        self.array_sparse = rt.array_sparse(self.root)
+        self.heap_dense = rt.heap_dense(str(self.root))
+        self.heap_sparse = rt.heap_sparse(str(self.root))
 
-    # Cleaning up after the test
-    def tearDown(self):
-        pass
+    def testDense(self):
+        self.assertLess(self.array_dense, self.heap_dense)
 
-    def testExpectedResult(self):
-        pass
-
-    def test_upper(self):
-        pass
+    def testSparse(self):
+        self.assertGreater(self.heap_sparse, self.array_sparse)
 
 
 if __name__ == '__main__':

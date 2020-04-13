@@ -41,9 +41,9 @@ def tarjanstpath(graph, starting_node, ending_node):
 
 def TarjanSPathTree():
 
-    file = "../data/padgett.txt"
+    file = "data/heap/sparse_stream_arcs.txt"
     graph = convert_to_adj_list(file)
-    print("Our nodes in the graph is:", *graph.keys())
+    print("Our nodes in the graph is from 0 to", len(graph.keys()) - 1)
 
     initial_node = input("Input node which you want to start with: ")
 
@@ -55,8 +55,7 @@ def TarjanSPathTree():
 
             print("----------Solution----------")
             for node, value in spanning_tree.items():
-                print("Node ", node, ":")
-                print("Distance and path from ", "node ", initial_node, " is: ", value)
+                print("Distance and path from node", initial_node, "to node", node, "is: ", value)
 
             choice = input("Do you want to continue? (y/n): ")
 
@@ -80,15 +79,9 @@ def TarjanSPathTree():
 
 if __name__ == "__main__":
 
-    file_q3 = "../data/heap/ballyskate_layout.txt"
+    file_q3 = "../data/heap/dense_stream_arcs.txt"
     graph_3 = convert_to_adj_list(file_q3)
     print(graph_3)
-    print(tarjanspathtree(graph_3, '1'))
-    print(tarjanstpath(graph_3, '1', 'p'))
-
-    file_4 = "../data/padgett.txt"
-    graph_4 = convert_to_adj_list(file_4)
-    print(graph_4)
-    print(tarjanspathtree(graph_4, 'Medici'))
-    # print(tarjanstpath(graph_4, 'Medici', 'Peruzzi'))
-    # TarjanSPathTree()
+    a = tarjanspathtree(graph_3, '1')
+    for i in sorted(a.keys()):
+        print("Distance and shortest_path from node 1 to node", i, "is", a[i])

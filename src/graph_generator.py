@@ -4,7 +4,7 @@ import numpy as np
 import random
 
 
-def generate_dir_wei_sparse_graph(total_num_nodes,G):
+def generate_dir_wei_sparse_graph(total_num_nodes, G):
     """The funcion generate a sparse directed graph with weight by using Barabasi_Albert method"""
     for i in range(1, total_num_nodes):
         # before adding nodes, first calculate probabilities of each node
@@ -52,7 +52,7 @@ def generate_dir_wei_sparse_graph(total_num_nodes,G):
     return G
 
 
-def generate_dir_wei_dense_graph(total_num_nodes,G):
+def generate_dir_wei_dense_graph(total_num_nodes, G):
     """The funcion generate a directed graph with weight by using Barabasi_Albert method"""
 
     for i in range(1, total_num_nodes):
@@ -160,34 +160,28 @@ def graph_generator():
     C = np.matrix([[0]])
     G = nx.from_numpy_matrix(C, create_using=nx.DiGraph)
     graph_size = int(input("Type the number of nodes you want in total:\n"))
-    dense_or_sparse = input("Choose dense or sparse graph (dense/sparse):\n ")
-    if dense_or_sparse == "dense":
 
-        graph = generate_dir_wei_dense_graph(graph_size, G)
-        graph_visualisation(graph)
 
-        # save graph to the form of a martix:
-        graph_matrix = nx.to_numpy_matrix(graph)
+    dense_graph = generate_dir_wei_dense_graph(graph_size, G)
 
-        # save to txt files:
-        txt_file_name_array_dense = "../data/array/dense_weighted_matrix.txt"
-        txt_file_name_stream_dense = "../data/heap/dense_stream_arcs.txt"
-        save_stream_arc_format(graph_matrix, graph_size, txt_file_name_stream_dense)
-        save_matrix_format(graph_matrix, graph_size, txt_file_name_array_dense)
+    # save graph to the form of a martix:
+    dense_graph_matrix = nx.to_numpy_matrix(dense_graph)
 
-    else:
+    # save to txt files:
+    txt_file_name_array_dense = "data/array/dense_weighted_matrix.txt"
+    txt_file_name_stream_dense = "data/heap/dense_stream_arcs.txt"
+    save_stream_arc_format(dense_graph_matrix, graph_size, txt_file_name_stream_dense)
+    save_matrix_format(dense_graph_matrix, graph_size, txt_file_name_array_dense)
 
-        graph = generate_dir_wei_sparse_graph(graph_size, G)
-        graph_visualisation(graph)
+    sparse_graph = generate_dir_wei_sparse_graph(graph_size, G)
+    # save graph to the form of a martix:
+    sparse_graph_matrix = nx.to_numpy_matrix(sparse_graph)
 
-        # save graph to the form of a martix:
-        graph_matrix = nx.to_numpy_matrix(graph)
-
-        # save to txt files:
-        txt_file_name_array_sparse = "../data/array/sparse_weighted_matrix.txt"
-        txt_file_name_stream_sparse = "../data/heap/sparse_stream_arcs.txt"
-        save_stream_arc_format(graph_matrix, graph_size, txt_file_name_stream_sparse)
-        save_matrix_format(graph_matrix, graph_size, txt_file_name_array_sparse)
+    # save to txt files:
+    txt_file_name_array_sparse = "data/array/sparse_weighted_matrix.txt"
+    txt_file_name_stream_sparse = "data/heap/sparse_stream_arcs.txt"
+    save_stream_arc_format(sparse_graph_matrix, graph_size, txt_file_name_stream_sparse)
+    save_matrix_format(sparse_graph_matrix, graph_size, txt_file_name_array_sparse)
 
 
 if __name__ == "__main__":

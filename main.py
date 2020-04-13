@@ -3,6 +3,7 @@ from src.dijkstra import *
 from src.tarjan import TarjanSPathTree, tarjanstpath
 from src.ultilities import convert_to_adj_list
 from src.centrality import FloretineMarriage
+from src.graph_generator import graph_generator
 
 
 def main():
@@ -15,6 +16,9 @@ def main():
     while user_choice != 4:
 
         if user_choice == 1:
+            print("You need to create a graph first.")
+            graph_generator()
+
             print("Update for use of heap and array")
 
             while True:
@@ -23,6 +27,7 @@ def main():
 
                 if structure_choice.lower() == "array":
                     print("to be updated")
+
                     break
 
                 elif structure_choice.lower() == "heap":
@@ -37,7 +42,7 @@ def main():
             print("Solution for Ballyskate problem: ")
             file = "data/heap/ballyskate_layout.txt"
             graph = convert_to_adj_list(file)
-            print("Distance and the shortest path from node 1 to node p is: ",tarjanstpath(graph, '1', 'p'))
+            print("Distance and the shortest path from node 1 to node p is: ", tarjanstpath(graph, '1', 'p'))
 
         elif user_choice == 3:
             print("Solution for Padgett Marriage Alliances problem:")

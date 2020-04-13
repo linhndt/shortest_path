@@ -48,7 +48,7 @@ def eigen_vector(graph):
 
 def FloretineMarriage():
 
-    txt_input_file = "../data/padgett.txt"
+    txt_input_file = "data/padgett.txt"
 
     adj_list = convert_to_adj_list(txt_input_file)
     graph = convert_to_graph(txt_input_file)
