@@ -161,10 +161,9 @@ def graph_generator():
     G = nx.from_numpy_matrix(C, create_using=nx.DiGraph)
     graph_size = int(input("Type the number of nodes you want in total:\n"))
 
-
+    # dense graph
     dense_graph = generate_dir_wei_dense_graph(graph_size, G)
-
-    # save graph to the form of a martix:
+    # save graph to the form of a matrix:
     dense_graph_matrix = nx.to_numpy_matrix(dense_graph)
 
     # save to txt files:
@@ -173,8 +172,9 @@ def graph_generator():
     save_stream_arc_format(dense_graph_matrix, graph_size, txt_file_name_stream_dense)
     save_matrix_format(dense_graph_matrix, graph_size, txt_file_name_array_dense)
 
+    # sparse graph
     sparse_graph = generate_dir_wei_sparse_graph(graph_size, G)
-    # save graph to the form of a martix:
+    # save graph to the form of a matrix:
     sparse_graph_matrix = nx.to_numpy_matrix(sparse_graph)
 
     # save to txt files:

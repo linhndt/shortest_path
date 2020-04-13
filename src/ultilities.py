@@ -39,9 +39,3 @@ def convert_to_graph(file):
 
     graph = nx.Graph(graph_dict)
     return graph
-
-
-if __name__ == "__main__":
-
-    txt = "../data/padgett.txt"
-    a = convert_to_graph(txt)

@@ -4,6 +4,7 @@ import numpy as np
 
 
 def tarjanspathtree(graph, starting_node):
+    """Create Shortest path tree using Tarjan method using a min heap."""
 
     solution_dict = {}
 
@@ -31,6 +32,7 @@ def tarjanspathtree(graph, starting_node):
 
 
 def tarjanstpath(graph, starting_node, ending_node):
+    """Create a shortest path from source to target using Tarjan method."""
 
     solution_dict = tarjanspathtree(graph, starting_node)
 
@@ -40,6 +42,7 @@ def tarjanstpath(graph, starting_node, ending_node):
 
 
 def TarjanSPathTree():
+    """Implementation of Shortest path tree using Tarjain method for a sparse graph."""
 
     file = "data/heap/sparse_stream_arcs.txt"
     graph = convert_to_adj_list(file)

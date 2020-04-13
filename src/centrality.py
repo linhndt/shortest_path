@@ -4,6 +4,7 @@ import networkx as nx
 
 
 def closeness(graph):
+    """Calculate the closeness centrality of each node in a graph."""
 
     closeness_dict = {}
 
@@ -26,6 +27,7 @@ def closeness(graph):
 
 
 def betweeness(graph):
+    """Calculate the betweeness centrality of each node in a graph."""
 
     bw_dict = nx.betweenness_centrality(graph, normalized=True)
 
@@ -33,6 +35,7 @@ def betweeness(graph):
 
 
 def degree(graph):
+    """Calculate the degree centrality of each node in a graph."""
 
     deg_dict = nx.degree_centrality(graph)
 
@@ -40,6 +43,7 @@ def degree(graph):
 
 
 def eigen_vector(graph):
+    """Calculate the eigenvector centrality of each node in a graph."""
 
     eig_dict = nx.eigenvector_centrality(graph)
 
@@ -47,6 +51,7 @@ def eigen_vector(graph):
 
 
 def FloretineMarriage():
+    """Calculate the centrality measures of each nodes in Padgett data of Floretine Marriage Alliances."""
 
     txt_input_file = "data/padgett.txt"
 

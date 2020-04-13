@@ -4,6 +4,8 @@ from src.dijkstra import Dijkstraspathtree
 from src.tarjan import tarjanspathtree
 from src.ultilities import convert_to_adj_list
 
+""" To calculate running time applying array/ heap data structure for each dense/ sparse graph."""
+
 
 def array_dense(root):
     txt = "../data/array/dense_weighted_matrix.txt"

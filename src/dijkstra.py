@@ -2,6 +2,7 @@ import numpy as np
 
 
 def Dijkstraspathtree(matrix, start):
+    """Create Djikstra Shortest Path tree using a matrix."""
     length = len(matrix)
     permanent_vertices = [start]
     temporary_vertices = []
@@ -41,6 +42,7 @@ def Dijkstraspathtree(matrix, start):
 
 
 def Djikstrastpath(matrix, start, end):
+    """Create a shortest path from source to target using Djikstra Algorithm."""
 
     solution_dict = Dijkstraspathtree(matrix, start)
     spath = solution_dict[end]
@@ -49,6 +51,7 @@ def Djikstrastpath(matrix, start, end):
 
 
 def DjikstraSthTree():
+    """Implementation of Djikstra Algorithm for a dense graph"""
 
     file = "data/array/dense_weighted_matrix.txt"
     adjacency_matrix = np.loadtxt(file, skiprows=2)
