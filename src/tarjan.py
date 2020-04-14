@@ -78,10 +78,3 @@ def TarjanSPathTree():
             print("Please input a proper starting node.")
 
         initial_node = input("Input node which you want to start with: ")
-
-
-if __name__ == "__main__":
-
-    file_q3 = "../data/heap/sparse_stream_arcs.txt"
-    graph_3 = convert_to_adj_list(file_q3)
-    print(graph_3)

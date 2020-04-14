@@ -1,6 +1,6 @@
 S
 16
-Pucci, Pucci, 0
+Pucci,Pucci, 0
 Peruzzi,Castellan, 1
 Peruzzi,Strozzi, 1
 Peruzzi,Bischeri, 1

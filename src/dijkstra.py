@@ -89,10 +89,3 @@ def DjikstraSthTree():
             print("Please input a proper starting node.")
 
         initial_node = input("Input node which you want to start with: ")
-
-
-txt_file = "../data/array/dense_weighted_matrix.txt"
-to_test_graph = np.loadtxt(txt_file, skiprows=2)
-to_test_graph[to_test_graph == 0] = np.inf
-a = Djikstrastpath(to_test_graph, 1, "26")[0]
-print(a)

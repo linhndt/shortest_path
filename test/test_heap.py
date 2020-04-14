@@ -17,6 +17,7 @@ class Heap(unittest.TestCase):
     random_list = random.sample(range(10, 100), 10)
     to_test_heap = MinHeap(random_list.copy())
     heapq.heapify(random_list)
+    print(random_list)
 
     def testDelmin(self):
         self.assertEqual(self.to_test_heap.delete_min(), heapq.heappop(self.random_list))

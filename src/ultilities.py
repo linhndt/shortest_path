@@ -41,4 +41,3 @@ def convert_to_graph(file):
     return graph
 
 
-coverted_graph = convert_to_graph("../data/heap/dense_stream_arcs.txt")

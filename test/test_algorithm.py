@@ -22,8 +22,8 @@ class DSTpath(unittest.TestCase):
 
     to_test_graph[to_test_graph == 0] = np.inf
 
-    source = 0
-    target = 26
+    source = 10
+    target = 67
 
     def setUp(self):
         source = self.source
@@ -49,8 +49,8 @@ class TSPth(unittest.TestCase):
     to_test_graph = convert_to_adj_list(s_txt_file)
     nx_graph = nx.from_numpy_matrix(np.loadtxt(a_txt_file, skiprows=2))
 
-    source = 1
-    target = 90
+    source = 30
+    target = 56
 
     def setUp(self):
         source = self.source
