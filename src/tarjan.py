@@ -46,7 +46,7 @@ def TarjanSPathTree():
 
     file = "data/heap/sparse_stream_arcs.txt"
     graph = convert_to_adj_list(file)
-    print("Our nodes in the graph is from 0 to", len(graph.keys()) - 1)
+    print("Our nodes in the graph is ", graph.keys())
 
     initial_node = input("Input node which you want to start with: ")
 
@@ -82,6 +82,6 @@ def TarjanSPathTree():
 
 if __name__ == "__main__":
 
-    file_q3 = "../data/heap/dense_stream_arcs.txt"
+    file_q3 = "../data/heap/sparse_stream_arcs.txt"
     graph_3 = convert_to_adj_list(file_q3)
     print(graph_3)

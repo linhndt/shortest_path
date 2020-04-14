@@ -40,3 +40,5 @@ def convert_to_graph(file):
     graph = nx.Graph(graph_dict)
     return graph
 
+
+coverted_graph = convert_to_graph("../data/heap/dense_stream_arcs.txt")
