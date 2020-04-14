@@ -16,7 +16,7 @@ Bischeri,Peruzzi, 1
 Bischeri,Strozzi, 1
 Barbadori,Medici, 1
 Barbadori,Castellan, 1
-Ridolfi,Tornaboun, 1
+Ridolfi,Tornabuon, 1
 Ridolfi,Medici, 1
 Ridolfi,Strozzi, 1
 Tornabuon,Ridolfi, 1

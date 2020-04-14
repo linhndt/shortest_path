@@ -23,7 +23,7 @@ def convert_to_graph(file):
     arc_stream = np.loadtxt(file, skiprows=2, delimiter=",", dtype={'names': ('nodeu', 'nodev', 'weight'),
                                                            'formats': ('S25', 'S25', 'i4')})
 
-    graph_dict = defaultdict(list)
+    graph_dict = defaultdict()
 
     for u, v, weight in arc_stream:
         u = u.decode('utf-8')
@@ -34,10 +34,14 @@ def convert_to_graph(file):
         if v not in graph_dict.keys():
             graph_dict[v] = {}
 
-        graph_dict[u][v] = weight
-        graph_dict[v][u] = weight
+        graph_dict[u][v] = {"weight": weight}
+        graph_dict[v][u] = {"weight": weight}
 
     graph = nx.Graph(graph_dict)
     return graph
 
 
+if __name__ == "__main__":
+    txt_input_file = "../data/padgett.txt"
+    a = convert_to_graph(txt_input_file)
+    nx.draw(a, with_labels=True)
